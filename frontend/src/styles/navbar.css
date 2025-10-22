@@ -1,0 +1,452 @@
+/* ============================================
+   NAVBAR STYLES
+   ============================================ */
+.navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 32px;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+/* Left Section */
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mobile-menu-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  font-size: 28px;
+  color: #495057;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.mobile-menu-toggle:hover {
+  background-color: rgba(0,123,255,0.08);
+  color: #007bff;
+}
+
+.logo {
+  width: 44px;
+  height: 44px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.brand-name {
+  font-weight: 700;
+  font-size: 20px;
+  margin: 0;
+  background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Center Navigation */
+.nav-links {
+  display: flex;
+  gap: 8px;
+}
+
+.nav-link {
+  background: transparent;
+  border: none;
+  padding: 10px 18px;
+  margin: 0;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 15px;
+  color: #495057;
+  transition: all 0.3s ease;
+  border-radius: 8px;
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: #007bff;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #007bff;
+  background-color: rgba(0,123,255,0.08);
+}
+
+.nav-link:hover::after {
+  width: 60%;
+}
+
+.nav-link.active {
+  color: #007bff;
+  background-color: rgba(0,123,255,0.1);
+}
+
+/* Right Section */
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.icon-btn {
+  background: transparent;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 22px;
+  color: #495057;
+  transition: all 0.3s ease;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.icon-btn:hover {
+  background-color: rgba(0,123,255,0.08);
+  color: #007bff;
+  transform: translateY(-1px);
+}
+
+.notification-icon {
+  font-size: 24px;
+}
+
+.notification-badge {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  background: linear-gradient(135deg, #ff4757 0%, #ff3838 100%);
+  color: white;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 5px;
+  border-radius: 10px;
+  min-width: 16px;
+  text-align: center;
+}
+
+.add-icon-btn {
+  background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+  color: #fff;
+  padding: 10px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,123,255,0.3);
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.add-icon-btn .btn-icon {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.add-icon-btn .btn-text {
+  display: inline;
+}
+
+.add-icon-btn:hover {
+  background: linear-gradient(135deg, #0056b3 0%, #004494 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,123,255,0.4);
+}
+
+.add-icon-btn:active {
+  transform: translateY(0);
+}
+
+.logout-btn:hover {
+  color: #dc3545;
+  background-color: rgba(220,53,69,0.08);
+}
+
+/* Mobile Add Button - Hidden by default on desktop */
+.mobile-add-btn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+  color: #fff;
+  border: none;
+  padding: 16px 32px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 16px;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 8px 24px rgba(0,123,255,0.4);
+  z-index: 999;
+  transition: all 0.3s ease;
+}
+
+.mobile-add-btn .btn-icon {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.mobile-add-btn:hover {
+  transform: translateX(-50%) translateY(-3px);
+  box-shadow: 0 12px 32px rgba(0,123,255,0.5);
+}
+
+.mobile-add-btn:active {
+  transform: translateX(-50%) translateY(-1px);
+}
+
+/* Mobile Menu Overlay */
+.mobile-menu-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 98;
+  backdrop-filter: blur(2px);
+}
+
+.mobile-menu-overlay.show {
+  display: block;
+}
+
+/* ============================================
+   POPUP STYLES
+   ============================================ */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.popup-content {
+  background: #fff;
+  padding: 32px;
+  border-radius: 16px;
+  width: 600px;
+  max-width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  position: relative;
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Close Button */
+.close-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: rgba(0,0,0,0.05);
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  cursor: pointer;
+  color: #6c757d;
+  transition: all 0.2s ease;
+}
+
+.close-btn:hover {
+  background: rgba(220,53,69,0.1);
+  color: #dc3545;
+  transform: rotate(90deg);
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+/* Tablet and Mobile */
+@media (max-width: 768px) {
+  .mobile-menu-toggle { 
+    display: flex; 
+  }
+  
+  /* Hide mobile floating button, show navbar add button */
+  .mobile-add-btn { 
+    display: none; 
+  }
+  
+  .add-icon-btn {
+    display: flex;
+    width: 40px;
+    height: 40px;
+  }
+  
+  /* Hide text, show only icon on mobile */
+  .add-icon-btn .btn-text {
+    display: none;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 69px;
+    left: -100%;
+    width: 260px;
+    height: calc(100vh - 69px);
+    background: #fff;
+    flex-direction: column;
+    padding: 20px 0;
+    box-shadow: 4px 0 12px rgba(0,0,0,0.15);
+    transition: left 0.3s ease;
+    z-index: 99;
+    overflow-y: auto;
+  }
+
+  .nav-links.show { 
+    left: 0; 
+  }
+
+  .nav-link {
+    width: 100%;
+    padding: 16px 24px;
+    border-radius: 0;
+    text-align: left;
+    font-size: 16px;
+    border-left: 4px solid transparent;
+  }
+
+  .nav-link::after { 
+    display: none; 
+  }
+  
+  .nav-link:hover { 
+    background-color: rgba(0,123,255,0.05); 
+    border-left-color: #007bff; 
+  }
+  
+  .nav-link.active { 
+    background-color: rgba(0,123,255,0.1); 
+    border-left-color: #007bff; 
+    color: #007bff;
+  }
+
+  .navbar-left { 
+    flex: 1; 
+  }
+  
+  .brand-name { 
+    font-size: 18px; 
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .navbar-container {
+    padding: 10px 16px;
+  }
+
+  .popup-content {
+    width: 95%;
+    max-width: 95%;
+    padding: 20px;
+    border-radius: 16px 16px 0 0;
+    max-height: 85vh;
+    position: fixed;
+    bottom: 0;
+    animation: slideUpMobile 0.3s ease-out;
+  }
+
+  @keyframes slideUpMobile {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+  }
+
+  .popup-header h2 { 
+    font-size: 20px; 
+  }
+  
+  .form-actions { 
+    flex-direction: column; 
+    gap: 10px; 
+  }
+  
+  .cancel-btn, .submit-btn { 
+    width: 100%; 
+  }
+  
+  .brand-name { 
+    font-size: 16px; 
+  }
+  
+  .logo { 
+    width: 36px; 
+    height: 36px; 
+  }
+  
+  .mobile-menu-toggle { 
+    font-size: 24px; 
+    padding: 6px; 
+  }
+  
+  .icon-btn { 
+    padding: 8px; 
+    font-size: 20px; 
+  }
+  
+  .notification-icon { 
+    font-size: 22px; 
+  }
+  
+  .mobile-add-btn { 
+    padding: 12px 28px; 
+    font-size: 15px; 
+    bottom: 16px; 
+  }
+}

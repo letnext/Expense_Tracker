@@ -1,0 +1,101 @@
+.credit_deb_container {
+  display: flex;
+  gap: 20px;
+  margin: 20px auto;
+  justify-content: center;
+  flex-wrap: wrap;
+  /* allows wrapping on smaller screens */
+  width: 100%;
+  max-width: 1000px;
+}
+.negative-balance {
+  color: red;
+  font-weight: 600;
+}
+
+.positive {
+  color: green;
+  font-weight: 600;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+}
+
+/* CARD STYLES */
+.card {
+  background-color: #fff;
+  padding: 15px 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  flex: 1 1 200px;
+  /* flexible width, min 200px */
+  max-width: 300px;
+  text-align: center;
+  width: 100%;
+  color: #000;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* ICONS INSIDE CARD */
+.icons-css {
+  font-size: 24px;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: #555;
+  transition: color 0.2s ease;
+}
+
+.icons-css:hover {
+  color: #007bff;
+}
+
+/* Tablets / small laptops */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 22px;
+  }
+
+  .card {
+    max-width: 45%;
+    padding: 12px 15px;
+  }
+}
+
+/* Mobile phones */
+@media (max-width: 480px) {
+  .credit_deb_container {
+    flex-direction: row;
+    gap: 15px;
+    align-items: center;
+  }
+
+  .card {
+    max-width: 90%;
+    width: 90%;
+    padding: 12px 15px;
+  }
+
+  .icons-css {
+    font-size: 22px;
+    top: 8px;
+    right: 8px;
+  }
+
+  h1 {
+    font-size: 20px;
+    margin-top: 15px;
+  }
+}

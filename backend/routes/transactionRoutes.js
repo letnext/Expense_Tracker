@@ -1,0 +1,18 @@
+import express from "express";
+import {
+  addTransaction,
+  getTransactions,
+  getTransactionById,
+  updateTransaction,
+  deleteTransaction,
+} from "../controllers/transactionController.js";
+
+const router = express.Router();
+
+router.post("/add", addTransaction);          // Create
+router.get("/get", getTransactions);          // Read all
+router.get("/:id", getTransactionById);    // Read one
+router.put("/:id", updateTransaction);     // Update
+router.delete("/:id", deleteTransaction);  // Delete
+
+export default router;
