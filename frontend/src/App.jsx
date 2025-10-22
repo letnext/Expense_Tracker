@@ -18,11 +18,12 @@ const AppContent = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  const API_URI = import.meta.env.VITE_BASE_URL;
   // ✅ Fetch transactions function (can be called manually)
   const fetchTransactions = useCallback(async () => {
     setLoading(true);
     try {
-      const res = await fetch("http://localhost:8000/api/transactions/get");
+      const res = await fetch(`${API_URI}/api/transactions/get`);
       if (!res.ok) throw new Error("Failed to fetch transactions");
       const data = await res.json();
       setTransactions(data);

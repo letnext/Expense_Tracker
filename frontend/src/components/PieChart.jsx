@@ -7,7 +7,7 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
-import "../styles/Piechart.css";
+import "../styles/PieChart.css";
 
 const COLORS = [
   "#0088FE",

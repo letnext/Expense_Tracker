@@ -13,7 +13,9 @@ const AddTransactions = ({ refreshTransactions }) => {
 
   const [open, setOpen] = useState(true);
 
-  const apiUrl = "http://localhost:8000/api/transactions/add"; // endpoint
+  const API_URI = import.meta.env.VITE_BASE_URL;
+
+  const apiUrl =`${API_URI}/api/transactions/add`; // endpoint
 
   const navigate = useNavigate();
 
