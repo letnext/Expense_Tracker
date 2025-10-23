@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../styles/DailyExpenses.css";
 const DailyExpenses = ({ transactions = [], loading, error }) => {
+  if(transactions.length === 0) return <p style={{textAlign:"center",margin:"10px",fontWeight:"bold"}}>No expense data available.</p>;
   const [selectedCategory, setSelectedCategory] = useState(null);
   if (loading) return <p>Loading expenses...</p>;
   if (error) return <p>{error}</p>;

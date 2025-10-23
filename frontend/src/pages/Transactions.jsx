@@ -40,7 +40,12 @@ const Transactions = ({ transactions = [], loading, error, filterType = null }) 
 
   // ✅ Export PDF
   const exportPDF = () => {
-    if (!filteredTx.length) return;
+   
+     if (filteredTx.length === 0) {
+    alert("No transactions to export.");
+    return; // Stop further execution
+  }
+    
     const doc = new jsPDF();
     doc.setFont("helvetica", "normal");
     doc.setFontSize(16);
