@@ -49,7 +49,7 @@ const PieChart = ({ transactions }) => {
   return (
     <div className="piechart-container">
       <div className="piechart-wrapper">
-        <ResponsiveContainer width="100%" height="100%">
+        <ResponsiveContainer width="100%" height={400}>
           <RePieChart>
             <Pie
               data={data}

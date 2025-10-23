@@ -28,7 +28,7 @@ const DailyExpenses = ({ transactions = [], loading, error }) => {
             onClick={() => handleCardClick(cat)}
           >
             {" "}
-            <h2>{cat.name}</h2> <p>{cat.transactions.length} Transactions</p>{" "}
+            <h2>{cat.name}</h2> <p >{cat.transactions.length} Transaction</p>{" "}
           </div>
         ))}{" "}
       </div>{" "}
@@ -43,7 +43,7 @@ const DailyExpenses = ({ transactions = [], loading, error }) => {
               ✖{" "}
             </button>{" "}
             <h2>{selectedCategory.name}</h2>{" "}
-            <p>{selectedCategory.transactions.length} Transactions</p>{" "}
+            <p >{selectedCategory.transactions.length} Transactions</p>{" "}
             <table>
               {" "}
               <thead>

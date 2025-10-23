@@ -1,32 +1,46 @@
 /* ============================================
    PIE CHART STYLES
    ============================================ */
-
 .piechart-container {
-  max-width: 650px;
-  margin: 0 auto;
+  width: 100%;
+  height: 100%;
   background-color: #ffffff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 12px;
-  padding: 24px;
-  font-family: "Inter", "Segoe UI", sans-serif;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
   transition: all 0.3s ease;
   box-sizing: border-box;
-  margin-left: 5px;
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  outline: none; /* ✅ Prevent default focus border */
 }
 
+/* ✅ Remove focus outlines globally inside chart */
+.piechart-container *:focus,
+.piechart-container:focus {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+ .piechart-wrapper {
+  width: 100%;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+   
+} 
 .piechart-container:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
-}
 
-.piechart-wrapper {
-  width: 100%;
-  height: 400px;
-  margin: 0 auto;
 }
-
+/* p{
+  font-weight: 800;
+} */
 /* ============================================
    RESPONSIVE DESIGN
    ============================================ */

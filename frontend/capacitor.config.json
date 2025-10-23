@@ -1,0 +1,9 @@
+{
+  "appId": "com.lnt.expense",
+  "appName": "Fin Track",
+  "webDir": "build",
+  "server": {
+    "url": "https://lnt-expense.netlify.app/",
+    "cleartext": true
+  }
+}

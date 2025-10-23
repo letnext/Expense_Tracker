@@ -74,6 +74,7 @@
   z-index: 9999;
   backdrop-filter: blur(4px);
   animation: fadeIn 0.3s ease;
+  padding: 10px;
 }
 
 .overlay-content {
@@ -86,6 +87,8 @@
   position: relative;
   text-align: center;
   animation: popUp 0.4s ease;
+  max-height: 90vh;
+  overflow-y: auto;
 }
 
 .close-btn {
@@ -104,27 +107,40 @@
   color: #007bff;
 }
 
+/* Table styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+  font-size: 14px;
+}
+
+th {
+  background-color: #f4f4f4;
+  font-weight: 600;
+}
+
+/* Responsive table for mobile */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+}
+
 /* Animations */
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 @keyframes popUp {
-  from {
-    transform: scale(0.8);
-    opacity: 0;
-  }
-
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
 }
 
 /* ============================================ RESPONSIVE DESIGN ============================================ */
@@ -132,7 +148,6 @@
 @media (max-width: 1024px) {
   .category-card {
     width: 30%;
-    /* 3 cards per row */
     padding: 18px;
   }
 
@@ -149,36 +164,44 @@
 /* Small tablets / large phones */
 @media (max-width: 768px) {
   .category-card {
-    width: 45%;
-    /* 2 cards per row */
+    width: 40%;
     padding: 16px;
   }
 
   .overlay-content {
-    width: 80%;
+    width: 70%;
     padding: 20px;
   }
 
   .category-container h1 {
     font-size: 24px;
   }
+
+  th, td {
+    font-size: 12px;
+    padding: 8px;
+  }
 }
 
 /* Mobile phones / extra small */
 @media (max-width: 480px) {
   .category-card {
-    width: 90%;
-    /* 1 card per row */
+    width: 80%;
     padding: 12px;
     margin: 0 auto;
   }
 
   .overlay-content {
     width: 80%;
-    padding: 10px;
+    padding: 15px;
   }
 
   .category-container h1 {
     font-size: 20px;
+  }
+
+  th, td {
+    font-size: 12px;
+    padding: 6px;
   }
 }
