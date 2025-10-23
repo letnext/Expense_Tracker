@@ -1,5 +1,5 @@
-/* ============================================
-   NAVBAR STYLES
+/* ============================================ 
+   NAVBAR STYLES 
    ============================================ */
 .navbar-container {
   display: flex;
@@ -7,19 +7,24 @@
   justify-content: space-between;
   padding: 12px 32px;
   background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
   position: sticky;
   top: 0;
   z-index: 100;
-  border-bottom: 1px solid rgba(0,0,0,0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  min-height: 69px;
 }
 
-/* Left Section */
+/* ============================================ 
+   LEFT SECTION 
+   ============================================ */
 .navbar-left {
   display: flex;
   align-items: center;
   gap: 12px;
+  min-width: 0;
+  flex-shrink: 0;
 }
 
 .mobile-menu-toggle {
@@ -32,10 +37,11 @@
   padding: 8px;
   border-radius: 8px;
   transition: all 0.3s ease;
+  flex-shrink: 0;
 }
 
 .mobile-menu-toggle:hover {
-  background-color: rgba(0,123,255,0.08);
+  background-color: rgba(0, 123, 255, 0.08);
   color: #007bff;
 }
 
@@ -44,7 +50,8 @@
   height: 44px;
   object-fit: cover;
   border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
 }
 
 .brand-name {
@@ -55,12 +62,20 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-/* Center Navigation */
+/* ============================================ 
+   CENTER NAVIGATION 
+   ============================================ */
 .nav-links {
   display: flex;
+  align-items: center;
   gap: 8px;
+  flex-shrink: 1;
+  min-width: 0;
 }
 
 .nav-link {
@@ -75,6 +90,8 @@
   transition: all 0.3s ease;
   border-radius: 8px;
   position: relative;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .nav-link::after {
@@ -91,7 +108,7 @@
 
 .nav-link:hover {
   color: #007bff;
-  background-color: rgba(0,123,255,0.08);
+  background-color: rgba(0, 123, 255, 0.08);
 }
 
 .nav-link:hover::after {
@@ -100,14 +117,17 @@
 
 .nav-link.active {
   color: #007bff;
-  background-color: rgba(0,123,255,0.1);
+  background-color: rgba(0, 123, 255, 0.1);
 }
 
-/* Right Section */
+/* ============================================ 
+   RIGHT SECTION 
+   ============================================ */
 .navbar-right {
   display: flex;
   align-items: center;
   gap: 12px;
+  flex-shrink: 0;
 }
 
 .icon-btn {
@@ -123,10 +143,11 @@
   align-items: center;
   justify-content: center;
   position: relative;
+  flex-shrink: 0;
 }
 
 .icon-btn:hover {
-  background-color: rgba(0,123,255,0.08);
+  background-color: rgba(0, 123, 255, 0.08);
   color: #007bff;
   transform: translateY(-1px);
 }
@@ -158,9 +179,10 @@
   justify-content: center;
   gap: 8px;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,123,255,0.3);
+  box-shadow: 0 2px 8px rgba(0, 123, 255, 0.3);
   font-weight: 600;
   font-size: 15px;
+  white-space: nowrap;
 }
 
 .add-icon-btn .btn-icon {
@@ -176,7 +198,7 @@
 .add-icon-btn:hover {
   background: linear-gradient(135deg, #0056b3 0%, #004494 100%);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0,123,255,0.4);
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.4);
 }
 
 .add-icon-btn:active {
@@ -185,47 +207,12 @@
 
 .logout-btn:hover {
   color: #dc3545;
-  background-color: rgba(220,53,69,0.08);
+  background-color: rgba(220, 53, 69, 0.08);
 }
 
-/* Mobile Add Button - Hidden by default on desktop */
-.mobile-add-btn {
-  display: none;
-  position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
-  color: #fff;
-  border: none;
-  padding: 16px 32px;
-  border-radius: 50px;
-  cursor: pointer;
-  font-weight: 700;
-  font-size: 16px;
-  align-items: center;
-  gap: 8px;
-  box-shadow: 0 8px 24px rgba(0,123,255,0.4);
-  z-index: 999;
-  transition: all 0.3s ease;
-}
-
-.mobile-add-btn .btn-icon {
-  font-size: 20px;
-  font-weight: 700;
-  line-height: 1;
-}
-
-.mobile-add-btn:hover {
-  transform: translateX(-50%) translateY(-3px);
-  box-shadow: 0 12px 32px rgba(0,123,255,0.5);
-}
-
-.mobile-add-btn:active {
-  transform: translateX(-50%) translateY(-1px);
-}
-
-/* Mobile Menu Overlay */
+/* ============================================ 
+   MOBILE MENU OVERLAY 
+   ============================================ */
 .mobile-menu-overlay {
   display: none;
   position: fixed;
@@ -233,7 +220,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0, 0, 0, 0.5);
   z-index: 98;
   backdrop-filter: blur(2px);
 }
@@ -242,21 +229,22 @@
   display: block;
 }
 
-/* ============================================
-   POPUP STYLES
+/* ============================================ 
+   LOGOUT MODAL 
    ============================================ */
-.popup-overlay {
+.modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,0.6);
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   z-index: 1000;
-  backdrop-filter: blur(4px);
   animation: fadeIn 0.2s ease-out;
 }
 
@@ -265,188 +253,294 @@
   to { opacity: 1; }
 }
 
-.popup-content {
+.modal {
   background: #fff;
-  padding: 32px;
-  border-radius: 16px;
-  width: 600px;
-  max-width: 90%;
-  max-height: 90vh;
-  overflow-y: auto;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-  position: relative;
+  padding: 32px 28px;
+  border-radius: 12px;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
   animation: slideUp 0.3s ease-out;
 }
 
 @keyframes slideUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* Close Button */
-.close-btn {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  background: rgba(0,0,0,0.05);
-  border: none;
-  width: 36px;
-  height: 36px;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
-  cursor: pointer;
+.modal h2 {
+  margin: 0 0 16px 0;
+  font-size: 24px;
+  color: #212529;
+  font-weight: 600;
+}
+
+.modal p {
+  margin: 0 0 24px 0;
+  font-size: 16px;
   color: #6c757d;
-  transition: all 0.2s ease;
+  line-height: 1.5;
 }
 
-.close-btn:hover {
-  background: rgba(220,53,69,0.1);
-  color: #dc3545;
-  transform: rotate(90deg);
+.modal-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
 }
 
-/* ============================================
-   RESPONSIVE DESIGN
+.btn {
+  padding: 12px 24px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  min-width: 100px;
+}
+
+.btn-cancel {
+  background-color: #e9ecef;
+  color: #495057;
+}
+
+.btn-cancel:hover {
+  background-color: #dee2e6;
+  transform: translateY(-1px);
+}
+
+.btn-confirm {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.btn-confirm:hover {
+  background-color: #c82333;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+}
+
+/* ============================================ 
+   RESPONSIVE DESIGN - TABLET 
    ============================================ */
+@media (max-width: 1024px) {
+  .nav-link {
+    padding: 10px 14px;
+    font-size: 14px;
+  }
+  
+  .brand-name {
+    font-size: 18px;
+  }
+}
 
-/* Tablet and Mobile */
+/* ============================================ 
+   RESPONSIVE DESIGN - MOBILE 
+   ============================================ */
 @media (max-width: 768px) {
-  .mobile-menu-toggle { 
-    display: flex; 
+  .navbar-container {
+    padding: 10px 20px;
   }
-  
-  /* Hide mobile floating button, show navbar add button */
-  .mobile-add-btn { 
-    display: none; 
-  }
-  
-  .add-icon-btn {
+
+  .mobile-menu-toggle {
     display: flex;
-    width: 40px;
-    height: 40px;
+    width: 30px;
   }
-  
-  /* Hide text, show only icon on mobile */
+
+  .navbar-left {
+    gap: 10px;
+  }
+
+  .brand-name {
+    font-size: 17px;
+  }
+
+  /* Hide the Add Transaction text, show only icon */
+  .add-icon-btn {
+    padding: 10px;
+    width: 44px;
+    height: 44px;
+    gap: 0;
+  }
+
   .add-icon-btn .btn-text {
     display: none;
   }
 
+  .add-icon-btn .btn-icon {
+    font-size: 22px;
+  }
+
+  /* Mobile Navigation Menu */
   .nav-links {
     position: fixed;
     top: 69px;
     left: -100%;
-    width: 260px;
+    width: 280px;
     height: calc(100vh - 69px);
     background: #fff;
     flex-direction: column;
+    align-items: stretch;
     padding: 20px 0;
-    box-shadow: 4px 0 12px rgba(0,0,0,0.15);
+    box-shadow: 4px 0 12px rgba(0, 0, 0, 0.15);
     transition: left 0.3s ease;
     z-index: 99;
     overflow-y: auto;
+    gap: 0;
   }
 
-  .nav-links.show { 
-    left: 0; 
+  .nav-links.show {
+    left: 0;
   }
 
   .nav-link {
     width: 100%;
-    padding: 16px 24px;
+    padding: 18px 24px;
     border-radius: 0;
     text-align: left;
     font-size: 16px;
     border-left: 4px solid transparent;
+    justify-content: flex-start;
   }
 
-  .nav-link::after { 
-    display: none; 
+  .nav-link::after {
+    display: none;
   }
-  
-  .nav-link:hover { 
-    background-color: rgba(0,123,255,0.05); 
-    border-left-color: #007bff; 
+
+  .nav-link:hover {
+    background-color: rgba(0, 123, 255, 0.05);
+    border-left-color: #007bff;
   }
-  
-  .nav-link.active { 
-    background-color: rgba(0,123,255,0.1); 
-    border-left-color: #007bff; 
+
+  .nav-link.active {
+    background-color: rgba(0, 123, 255, 0.1);
+    border-left-color: #007bff;
     color: #007bff;
   }
 
-  .navbar-left { 
-    flex: 1; 
+  .navbar-right {
+    gap: 8px;
   }
-  
-  .brand-name { 
-    font-size: 18px; 
+
+  .icon-btn {
+    padding: 10px;
+    font-size: 20px;
   }
 }
 
-/* Mobile */
+/* ============================================ 
+   RESPONSIVE DESIGN - SMALL MOBILE 
+   ============================================ */
 @media (max-width: 480px) {
   .navbar-container {
     padding: 10px 16px;
   }
 
-  .popup-content {
-    width: 95%;
-    max-width: 95%;
-    padding: 20px;
-    border-radius: 16px 16px 0 0;
-    max-height: 85vh;
-    position: fixed;
-    bottom: 0;
-    animation: slideUpMobile 0.3s ease-out;
+  .navbar-left {
+    gap: 8px;
   }
 
-  @keyframes slideUpMobile {
-    from { transform: translateY(100%); }
-    to { transform: translateY(0); }
+  .brand-name {
+    font-size: 15px;
+    font-weight: 600;
   }
 
-  .popup-header h2 { 
-    font-size: 20px; 
+  .logo {
+    width: 38px;
+    height: 38px;
   }
-  
-  .form-actions { 
-    flex-direction: column; 
-    gap: 10px; 
+
+  .mobile-menu-toggle {
+    font-size: 24px;
+    padding: 6px;
   }
-  
-  .cancel-btn, .submit-btn { 
-    width: 100%; 
+
+  .add-icon-btn {
+    width: 40px;
+    height: 40px;
+    padding: 8px;
   }
-  
-  .brand-name { 
-    font-size: 16px; 
+
+  .add-icon-btn .btn-icon {
+    font-size: 20px;
   }
-  
-  .logo { 
-    width: 36px; 
-    height: 36px; 
+
+  .icon-btn {
+    padding: 8px;
+    font-size: 20px;
   }
-  
-  .mobile-menu-toggle { 
-    font-size: 24px; 
-    padding: 6px; 
+
+  .navbar-right {
+    gap: 6px;
   }
-  
-  .icon-btn { 
-    padding: 8px; 
-    font-size: 20px; 
+
+  .nav-links {
+    width: 260px;
   }
-  
-  .notification-icon { 
-    font-size: 22px; 
+
+  .modal {
+    padding: 24px 20px;
+    width: 92%;
   }
-  
-  .mobile-add-btn { 
-    padding: 12px 28px; 
-    font-size: 15px; 
-    bottom: 16px; 
+
+  .modal h2 {
+    font-size: 20px;
+    margin-bottom: 12px;
+  }
+
+  .modal p {
+    font-size: 15px;
+    margin-bottom: 20px;
+  }
+
+  .modal-buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .btn {
+    width: 100%;
+    padding: 12px;
+  }
+}
+
+/* ============================================ 
+   RESPONSIVE DESIGN - EXTRA SMALL 
+   ============================================ */
+@media (max-width: 360px) {
+  .navbar-container {
+    padding: 8px 12px;
+  }
+
+  .brand-name {
+    font-size: 14px;
+  }
+
+  .logo {
+    width: 36px;
+    height: 36px;
+  }
+
+  .navbar-left {
+    gap: 6px;
+  }
+
+  .add-icon-btn,
+  .icon-btn {
+    width: 36px;
+    height: 36px;
+    padding: 6px;
+    font-size: 18px;
+  }
+
+  .navbar-right {
+    gap: 4px;
   }
 }

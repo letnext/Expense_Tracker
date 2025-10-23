@@ -36,7 +36,7 @@ const Dashboard = ({ transactions = [], loading, error }) => {
   return (
     <>
       <div className="credit_deb_container">
-        <div className="card">
+        <div className="card" >
           <div className="icons-css">
             <GiCash />
           </div>
