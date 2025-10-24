@@ -199,6 +199,9 @@ th {
   .category-container h1 {
     font-size: 20px;
   }
+  .close-btn{
+    margin-right: -120px;
+  }
 
   th, td {
     font-size: 12px;
