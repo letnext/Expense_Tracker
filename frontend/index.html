@@ -63,68 +63,72 @@
 
     <!-- Smart install suggestion -->
     <script>
-      window.addEventListener("load", () => {
-        const suggestionDiv = document.getElementById("apk-suggestion");
+  window.addEventListener("load", () => {
+    const suggestionDiv = document.getElementById("apk-suggestion");
 
-        // Detect devices
-        const ua = navigator.userAgent || navigator.vendor || window.opera;
-        const isAndroid = /Android/i.test(ua);
-        const isIOS = /iPhone|iPad|iPod/i.test(ua);
-        const isMobile = isAndroid || isIOS;
-        if (!isMobile) return;
+    const ua = navigator.userAgent || navigator.vendor || window.opera;
+    const isAndroid = /Android/i.test(ua);
+    const isIOS = /iPhone|iPad|iPod/i.test(ua);
+    const isMobile = isAndroid || isIOS;
+    if (!isMobile) return;
 
-        // Check if dismissed within 7 days
-        const hideUntil = localStorage.getItem("hideApkSuggestionUntil");
-        if (hideUntil && Date.now() < parseInt(hideUntil)) return;
+    const hideUntil = localStorage.getItem("hideApkSuggestionUntil");
+    if (hideUntil && Date.now() < parseInt(hideUntil)) return;
 
-        // Try to open custom scheme (simulate opening the app)
-        let opened = false;
-        window.location = "myapp://open";
+    let opened = false;
+    window.location = "myapp://open";
 
-        setTimeout(() => {
-          if (!opened) {
-            // Define content for Android & iOS separately
-            const content = isAndroid
-              ? `
-                <p style="font-size: 16px; margin-bottom: 12px;">
-                  📱 It looks like the app isn’t installed yet.
-                </p>
-                <a href="/app-release.apk" download>📦 Download APK</a>
-                <br />
-                <button id="dismiss-btn">Don’t show again</button>
-              `
-              : `
-                <p style="font-size: 16px; margin-bottom: 12px;">
-                  📲 Add FinTrack to your Home Screen for a better experience!
-                </p>
-                <p style="font-size: 14px; color:#444; margin-bottom: 14px;">
-                  1️⃣ Tap the <strong>Share</strong> icon in Safari<br />
-                  2️⃣ Then tap <strong>Add to Home Screen</strong>
-                </p>
-                <button id="dismiss-btn">Don’t show again</button>
-              `;
+    setTimeout(() => {
+      if (!opened) {
+        // Android users: show APK download suggestion
+        if (isAndroid) {
+          suggestionDiv.innerHTML = `
+            <div class="box">
+              <p style="font-size: 16px; margin-bottom: 12px;">
+                📱 It looks like the app isn’t installed yet.
+              </p>
+              <a href="/app-release.apk" download="FinTrack.apk">📦 Download APK</a>
+              <br />
+              <button id="dismiss-btn">Don’t show again</button>
+            </div>
+          `;
+        }
 
-            suggestionDiv.innerHTML = `
-              <div class="box">${content}</div>
-            `;
+        // iOS users: show "Add to Home Screen" message
+        else if (isIOS) {
+          suggestionDiv.innerHTML = `
+            <div class="box">
+              <p style="font-size: 16px; margin-bottom: 12px;">
+                📲 Add FinTrack to your Home Screen for a better experience!
+              </p>
+              <p style="font-size: 14px; color:#444; margin-bottom: 14px;">
+                1️⃣ Tap the <strong>Share</strong> icon in Safari<br />
+                2️⃣ Then tap <strong>Add to Home Screen</strong>
+              </p>
+              <button id="dismiss-btn">Don’t show again</button>
+            </div>
+          `;
+        }
 
-            // Fade in suggestion
-            setTimeout(() => suggestionDiv.classList.add("show"), 100);
+        // Smooth fade-in
+        setTimeout(() => suggestionDiv.classList.add("show"), 100);
 
-            // “Don’t show again” button logic
-            const dismissBtn = suggestionDiv.querySelector("#dismiss-btn");
-            dismissBtn.addEventListener("click", () => {
-              const sevenDays = 7 * 24 * 60 * 60 * 1000; // 7 days
-              const expiry = Date.now() + sevenDays;
-              localStorage.setItem("hideApkSuggestionUntil", expiry);
-              suggestionDiv.classList.remove("show");
-              setTimeout(() => {
-                suggestionDiv.style.display = "none";
-              }, 600);
-            });
-          }
-        }, 1500);
-      });
-    </script>
+        // “Don’t show again” logic
+        const dismissBtn = suggestionDiv.querySelector("#dismiss-btn");
+        dismissBtn.addEventListener("click", () => {
+          const sevenDays = 7 * 24 * 60 * 60 * 1000; // 7 days
+          const expiry = Date.now() + sevenDays;
+          localStorage.setItem("hideApkSuggestionUntil", expiry);
+          suggestionDiv.classList.remove("show");
+          setTimeout(() => {
+            suggestionDiv.style.display = "none";
+          }, 600);
+        });
+      }
+    }, 1500);
+  });
+</script>
+
+
   </body>
 </html>
