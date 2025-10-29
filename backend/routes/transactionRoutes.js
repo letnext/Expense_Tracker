@@ -12,7 +12,8 @@ const router = express.Router();
 router.post("/add", addTransaction);          // Create
 router.get("/get", getTransactions);          // Read all
 router.get("/:id", getTransactionById);    // Read one
-router.put("edit/:id", updateTransaction);     // Update
-router.delete("del/:id", deleteTransaction);  // Delete
+router.put("/edit/:id", updateTransaction);
+router.delete("/del/:id", deleteTransaction);
+ 
 
 export default router;

@@ -7,6 +7,8 @@ import * as XLSX from "xlsx";
 
 const API_URI = import.meta.env.VITE_BASE_URL?.replace(/\/+$/, "");
 
+
+
 const categories = {
   expense: [
     "Current Bill",
@@ -127,7 +129,7 @@ const Transactions = ({
 
     setActionLoading(true);
     try {
-      const res = await fetch(`${API_URI}/api/transactions/${id}`, {
+      const res = await fetch(`${API_URI}/api/transactions/del/${id}`, {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
       });
@@ -166,7 +168,7 @@ const Transactions = ({
   const handleUpdate = async () => {
     setActionLoading(true);
     try {
-      const res = await fetch(`${API_URI}/api/transactions/${editTx._id}`, {
+      const res = await fetch(`${API_URI}/api/transactions/edit/${editTx._id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(editTx),
