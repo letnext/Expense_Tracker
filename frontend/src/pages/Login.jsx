@@ -12,7 +12,7 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    if (username === '1234' && password === '1234') {
+    if (username === 'LetNext@2025' && password === 'lnt@2025') {
       navigate('/dashboard') 
     } else {
       setError('Invalid username or password')
