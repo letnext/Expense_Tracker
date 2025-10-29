@@ -1,13 +1,130 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="/apple-touch-icon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>frontend</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <title>Fin Track | Expense</title>
+
+    <!-- Smooth fade-in animation -->
+    <style>
+      #apk-suggestion {
+        opacity: 0;
+        transition: opacity 0.6s ease-in-out;
+      }
+      #apk-suggestion.show {
+        opacity: 1;
+      }
+      #apk-suggestion .box {
+        text-align: center;
+        background-color: #f9fafb;
+        border: 1px solid #ddd;
+        border-radius: 12px;
+        padding: 16px;
+        margin: 20px auto;
+        width: 90%;
+        max-width: 420px;
+        font-family: system-ui, sans-serif;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      }
+      #apk-suggestion a {
+        background-color: #007bff;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 6px;
+        text-decoration: none;
+        display: inline-block;
+        margin-bottom: 10px;
+      }
+      #apk-suggestion button {
+        background-color: transparent;
+        color: #555;
+        border: none;
+        font-size: 14px;
+        cursor: pointer;
+        text-decoration: underline;
+      }
+    </style>
   </head>
+
   <body>
+    <!-- React root -->
     <div id="root"></div>
+
+    <!-- Suggestion container -->
+    <div id="apk-suggestion"></div>
+
+    <!-- Load your React app -->
     <script type="module" src="/src/main.jsx"></script>
+
+    <!-- Smart install suggestion -->
+    <script>
+      window.addEventListener("load", () => {
+        const suggestionDiv = document.getElementById("apk-suggestion");
+
+        // Detect devices
+        const ua = navigator.userAgent || navigator.vendor || window.opera;
+        const isAndroid = /Android/i.test(ua);
+        const isIOS = /iPhone|iPad|iPod/i.test(ua);
+        const isMobile = isAndroid || isIOS;
+        if (!isMobile) return;
+
+        // Check if dismissed within 7 days
+        const hideUntil = localStorage.getItem("hideApkSuggestionUntil");
+        if (hideUntil && Date.now() < parseInt(hideUntil)) return;
+
+        // Try to open custom scheme (simulate opening the app)
+        let opened = false;
+        window.location = "myapp://open";
+
+        setTimeout(() => {
+          if (!opened) {
+            // Define content for Android & iOS separately
+            const content = isAndroid
+              ? `
+                <p style="font-size: 16px; margin-bottom: 12px;">
+                  📱 It looks like the app isn’t installed yet.
+                </p>
+                <a href="/app-release.apk" download>📦 Download APK</a>
+                <br />
+                <button id="dismiss-btn">Don’t show again</button>
+              `
+              : `
+                <p style="font-size: 16px; margin-bottom: 12px;">
+                  📲 Add FinTrack to your Home Screen for a better experience!
+                </p>
+                <p style="font-size: 14px; color:#444; margin-bottom: 14px;">
+                  1️⃣ Tap the <strong>Share</strong> icon in Safari<br />
+                  2️⃣ Then tap <strong>Add to Home Screen</strong>
+                </p>
+                <button id="dismiss-btn">Don’t show again</button>
+              `;
+
+            suggestionDiv.innerHTML = `
+              <div class="box">${content}</div>
+            `;
+
+            // Fade in suggestion
+            setTimeout(() => suggestionDiv.classList.add("show"), 100);
+
+            // “Don’t show again” button logic
+            const dismissBtn = suggestionDiv.querySelector("#dismiss-btn");
+            dismissBtn.addEventListener("click", () => {
+              const sevenDays = 7 * 24 * 60 * 60 * 1000; // 7 days
+              const expiry = Date.now() + sevenDays;
+              localStorage.setItem("hideApkSuggestionUntil", expiry);
+              suggestionDiv.classList.remove("show");
+              setTimeout(() => {
+                suggestionDiv.style.display = "none";
+              }, 600);
+            });
+          }
+        }, 1500);
+      });
+    </script>
   </body>
 </html>

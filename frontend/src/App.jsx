@@ -1,17 +1,17 @@
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import { useEffect, useState, useCallback } from 'react';
-import Dashboard from './pages/Dashboard';
-import Transactions from './pages/Transactions';
-import DailyExpenses from './pages/DailyExpenses';
-import AddTransactions from './components/AddTransactions';
-import Investments from './pages/Investments';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
-import Login from './pages/Login';
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import { useEffect, useState, useCallback } from "react";
+import Dashboard from "./pages/Dashboard";
+import Transactions from "./pages/Transactions";
+import DailyExpenses from "./pages/DailyExpenses";
+import AddTransactions from "./components/AddTransactions";
+import Investments from "./pages/Investments";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import Login from "./pages/Login";
 
 const AppContent = () => {
   const location = useLocation();
-  const hideNavFooterRoutes = ['/', '/login'];
+  const hideNavFooterRoutes = ["/", "/login"];
   const shouldHideNavFooter = hideNavFooterRoutes.includes(location.pathname);
 
   const [transactions, setTransactions] = useState([]);
@@ -19,7 +19,8 @@ const AppContent = () => {
   const [error, setError] = useState(null);
 
   const API_URI = import.meta.env.VITE_BASE_URL;
-  // ✅ Fetch transactions function (can be called manually)
+
+  // ✅ Fetch transactions
   const fetchTransactions = useCallback(async () => {
     setLoading(true);
     try {
@@ -34,7 +35,7 @@ const AppContent = () => {
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [API_URI]);
 
   // ✅ Fetch once on mount
   useEffect(() => {
@@ -55,7 +56,7 @@ const AppContent = () => {
               transactions={transactions}
               loading={loading}
               error={error}
-              refreshTransactions={fetchTransactions} // pass refresh function
+              refreshTransactions={fetchTransactions}
             />
           }
         />
@@ -84,7 +85,10 @@ const AppContent = () => {
           }
         />
 
-        <Route path="/addtransactions" element={<AddTransactions refreshTransactions={fetchTransactions} />} />
+        <Route
+          path="/addtransactions"
+          element={<AddTransactions refreshTransactions={fetchTransactions} />}
+        />
 
         <Route
           path="/investments"
