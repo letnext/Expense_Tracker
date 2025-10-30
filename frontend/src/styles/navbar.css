@@ -339,6 +339,17 @@
   .brand-name {
     font-size: 18px;
   }
+  /* .back-btn-navbar {
+ display: none;
+}
+
+.back-btn-navbar:hover {
+ display: none;
+}
+
+.back-icn {
+  display: none;
+} */
 }
 
 /* ============================================ 
@@ -348,6 +359,7 @@
   .navbar-container {
     padding: 10px 20px;
   }
+  
 
   .mobile-menu-toggle {
     display: flex;
@@ -365,9 +377,10 @@
   /* Hide the Add Transaction text, show only icon */
   .add-icon-btn {
     padding: 10px;
-    width: 44px;
+    width: 40px;
     height: 44px;
     gap: 0;
+    margin-left: -20px;
   }
 
   .add-icon-btn .btn-text {
@@ -442,7 +455,27 @@
   .navbar-container {
     padding: 10px 16px;
   }
+.back-btn-navbar {
+  background: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: -10px;
+  cursor: pointer;
+  width: 50px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
 
+.back-btn-navbar:hover {
+  background-color: rgba(0, 123, 255, 0.08);
+}
+
+.back-icn {
+  font-size: 20px; /* increased size */
+  color: #007bff; /* blue to match theme */
+}
   .navbar-left {
     gap: 8px;
   }
@@ -519,6 +552,28 @@
     padding: 8px 12px;
   }
 
+  .back-btn-navbar {
+  background: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: -10px;
+  cursor: pointer;
+  width: 50px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.back-btn-navbar:hover {
+  background-color: rgba(0, 123, 255, 0.08);
+}
+
+.back-icn {
+  font-size: 20px; /* increased size */
+  color: #007bff; /* blue to match theme */
+}
+
   .brand-name {
     font-size: 14px;
   }
@@ -542,5 +597,48 @@
 
   .navbar-right {
     gap: 4px;
+  }
+}
+/* ============================================ 
+   MOBILE TOGGLE & BACK BUTTON SYNC FIX
+   ============================================ */
+@media (max-width: 768px) {
+  /* When not on dashboard, hide toggle */
+  .hidden-on-mobile {
+    display: none !important;
+  }
+
+  /* Back button visible only on mobile */
+  .mobile-only {
+    display: flex !important;
+  }
+
+  .navbar-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .mobile-menu-toggle,
+  .back-btn-navbar {
+    width: 40px;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    color: #007bff;
+    background-color: white;
+    
+  }
+
+  .back-btn-navbar .back-icn {
+    font-size: 25px;
+  }
+}
+
+/* Hide mobile-only back button on larger screens */
+@media (min-width: 769px) {
+  .mobile-only {
+    display: none !important;
   }
 }

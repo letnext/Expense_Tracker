@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "../styles/DailyExpenses.css";
+// import BackButton from "../components/BackButton";
+
 const DailyExpenses = ({ transactions = [], loading, error }) => {
   if(transactions.length === 0) return <p style={{textAlign:"center",margin:"10px",fontWeight:"bold"}}>No expense data available.</p>;
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -18,6 +20,7 @@ const DailyExpenses = ({ transactions = [], loading, error }) => {
   const closeOverlay = () => setSelectedCategory(null);
   return (
     <div className="category-container">
+      {/* <BackButton /> */}
       {" "}
       <h1>Expense Categories</h1>{" "}
       <div className="category-cards">

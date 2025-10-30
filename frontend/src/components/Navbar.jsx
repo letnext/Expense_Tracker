@@ -4,6 +4,7 @@ import '../styles/navbar.css';
 import { IoIosNotificationsOutline } from "react-icons/io";
 import { IoPowerSharp, IoMenu, IoClose } from "react-icons/io5";
 import { useNavigate, useLocation } from "react-router-dom";
+import { IoIosArrowBack } from "react-icons/io"; // back icon
 
 const Navbar = () => {
   const Navigate = useNavigate();
@@ -31,38 +32,51 @@ const Navbar = () => {
     setShowMobileMenu(false); 
   };
 
-  const handleLogout = () => {
-    setShowLogoutModal(true);
+  const handleLogout = () => setShowLogoutModal(true);
+  const confirmLogout = () => { Navigate("/"); setShowLogoutModal(false); };
+  const cancelLogout = () => setShowLogoutModal(false);
+
+  const handleAdd = () => Navigate('/addtransactions');
+  
+  const handleBack = () => {
+    if (window.history.state && window.history.state.idx > 0) {
+      Navigate(-1);
+    } else {
+      Navigate("/dashboard");
+    }
   };
 
-  const confirmLogout = () => {
-    Navigate("/");
-    setShowLogoutModal(false);
-  };
-
-  const cancelLogout = () => {
-    setShowLogoutModal(false);
-  };
-
-  const handleAdd = () => {
-    Navigate('/addtransactions');
-  };
+  // Detect if current page is dashboard
+  const isDashboard = location.pathname === "/dashboard";
 
   return (
     <>
       <nav className="navbar-container">
         <div className="navbar-left">
-          <button 
-            className="mobile-menu-toggle" 
+          {/* Toggle / Back Button logic */}
+          <button
+            className={`mobile-menu-toggle ${!isDashboard ? 'hidden-on-mobile' : ''}`}
             onClick={() => setShowMobileMenu(!showMobileMenu)}
             aria-label="Toggle menu"
           >
             {showMobileMenu ? <IoClose /> : <IoMenu />}
           </button>
+
+          {!isDashboard && (
+            <button
+              className="back-btn-navbar mobile-only"
+              onClick={handleBack}
+              aria-label="Go Back"
+            >
+              <IoIosArrowBack className="back-icn" />
+            </button>
+          )}
+
           <img src={logo} alt="Logo" className="logo" />
           <h1 className="brand-name">Letnext Fin Track</h1>
         </div>
 
+        {/* Navigation Links */}
         <div className={`nav-links ${showMobileMenu ? 'show' : ''}`}>
           <button 
             onClick={handleDash} 
@@ -93,7 +107,7 @@ const Navbar = () => {
         <div className="navbar-right">
           <button 
             className="icon-btn add-icon-btn" 
-            onClick={handleAdd} 
+            onClick={handleAdd}
             aria-label="Add Transaction"
           >
             <span className="btn-icon">+</span>
@@ -110,7 +124,6 @@ const Navbar = () => {
         </div>
       </nav>
 
-      {/* Mobile overlay */}
       {showMobileMenu && (
         <div 
           className="mobile-menu-overlay show" 
@@ -118,7 +131,6 @@ const Navbar = () => {
         ></div>
       )}
 
-      {/* Logout Confirmation Modal */}
       {showLogoutModal && (
         <div className="modal-overlay" onClick={cancelLogout}>
           <div className="modal" onClick={(e) => e.stopPropagation()}>

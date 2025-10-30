@@ -3,6 +3,7 @@ import "../styles/RecentTransactions.css";
 import { FaArrowUp, FaArrowDown, FaEdit, FaTrash } from "react-icons/fa";
 import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
+// import BackButton from "../components/BackButton";
 import * as XLSX from "xlsx";
 
 const API_URI = import.meta.env.VITE_BASE_URL?.replace(/\/+$/, "");
@@ -198,6 +199,7 @@ const Transactions = ({
 
   return (
     <div className="recent-transactions">
+      {/* <BackButton/> */}
       <h2>
         {filterType
           ? `Recent ${filterType.charAt(0).toUpperCase() + filterType.slice(1)}s`

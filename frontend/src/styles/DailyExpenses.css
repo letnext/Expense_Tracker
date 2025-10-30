@@ -97,8 +97,8 @@
   right: 20px;
   background: transparent;
   border: none;
-  font-size: 22px;
-  color: #333;
+  font-size: 18px;
+  color: #ff0303;
   cursor: pointer;
   transition: color 0.2s ease;
 }
@@ -189,11 +189,16 @@ th {
     width: 80%;
     padding: 12px;
     margin: 0 auto;
+  
   }
 
   .overlay-content {
     width: 80%;
     padding: 15px;
+    
+  }
+  .close-btn{
+    margin-right: -120px;
   }
 
   .category-container h1 {
